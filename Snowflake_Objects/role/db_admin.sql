@@ -1,1 +1,0 @@
-CREATE ROLE IF NOT EXISTS db_admin;
