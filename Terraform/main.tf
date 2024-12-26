@@ -13,7 +13,7 @@ provider "snowflake" {
   account_name      = "EFB27323"
   user              = "madhursingh"
   password          = "7088758000%Ma"
-  role              = "terraform_user"
+  role              = "ACCOUNTADMIN"
 }
 
 # Creating role for the snowflake to create the high level objects
@@ -79,7 +79,7 @@ resource "snowflake_grant_privileges_to_account_role" "permission_database" {
 
 # granting future permission to developer role on schema
 resource "snowflake_grant_privileges_to_account_role" "permission_future_schemas" {
-  all_privileges = true
+  all_privileges    = true
   account_role_name = snowflake_account_role.developer.name
   on_schema {
     future_schemas_in_database = snowflake_database.primary.name
@@ -88,9 +88,39 @@ resource "snowflake_grant_privileges_to_account_role" "permission_future_schemas
 
 # granting current permission to developer role on schema
 resource "snowflake_grant_privileges_to_account_role" "permission_current_schemas" {
-  all_privileges = true
+  all_privileges    = true
   account_role_name = snowflake_account_role.developer.name
   on_schema {
     all_schemas_in_database = snowflake_database.primary.name
   }
+}
+
+# Secret for the Git setup
+resource "snowflake_secret_with_basic_authentication" "git_secret" {
+  name     = "GIT_CRED"
+  database = "ELT_ENGINE"
+  schema   = "PUBLIC"
+  username = "madhursingh04072@gmail.com'"
+  password = "7088758000@Ma"
+  depends_on = [
+    snowflake_database.primary
+  ]
+}
+
+# API integration for github
+resource "snowflake_execute" "github_api" {
+  execute = "CREATE API INTEGRATION IF NOT EXISTS git_integration API_PROVIDER = git_https_api API_ALLOWED_PREFIXES = ('https://github.com') ALLOWED_AUTHENTICATION_SECRETS = (ELT_ENGINE.PUBLIC.GIT_CRED) ENABLED = true"
+  revert  = "DROP API INTEGRATION IF EXISTS git_integration"
+  depends_on = [
+    snowflake_secret_with_basic_authentication.git_secret
+  ]
+}
+
+# github repo
+resource "snowflake_execute" "github_repo" {
+  execute = "CREATE GIT REPOSITORY IF NOT EXISTS elt_engine.public.github_repo API_INTEGRATION = git_integration GIT_CREDENTIALS = ELT_ENGINE.PUBLIC.GIT_CRED ORIGIN = 'https://github.com/madhur-kumar-singh/snowflake_architecture.git'"
+  revert  = "DROP GIT REPOSITORY IF EXISTS elt_engine.public.github_repo"
+  depends_on = [
+    snowflake_execute.github_api
+  ]
 }
