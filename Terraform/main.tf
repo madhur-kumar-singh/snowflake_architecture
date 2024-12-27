@@ -124,12 +124,3 @@ resource "snowflake_execute" "github_repo" {
     snowflake_execute.github_api
   ]
 }
-
-# github repo
-resource "snowflake_execute" "github_repo_1" {
-  execute = "CREATE GIT REPOSITORY IF NOT EXISTS elt_engine.public.github_repo_1API_INTEGRATION = git_integration GIT_CREDENTIALS = ELT_ENGINE.PUBLIC.GIT_CRED ORIGIN = 'https://github.com/madhur-kumar-singh/snowflake_architecture.git'"
-  revert  = "DROP GIT REPOSITORY IF EXISTS elt_engine.public.github_repo"
-  depends_on = [
-    snowflake_execute.github_api
-  ]
-}
