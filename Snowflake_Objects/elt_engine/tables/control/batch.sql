@@ -1,5 +1,5 @@
 CREATE OR ALTER TABLE control.batch (
-      batch_id NUMBER(38,0) NOT NULL DEFAULT elt_engine.control.seq_batch
+      batch_id NUMBER(38,0) NOT NULL DEFAULT elt_engine.control.seq_batch.nextval
     , batch_name VARCHAR
     , is_active BOOLEAN NOT NULL DEFAULT TRUE
     , comment VARCHAR
