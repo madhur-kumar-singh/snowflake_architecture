@@ -126,7 +126,7 @@ resource "snowflake_execute" "github_repo" {
 }
 
 resource "snowflake_grant_privileges_to_account_role" "permission_git_repo" {
-  privileges        = ["READ"]
+  privileges        = ["READ","WRITE"]
   account_role_name = snowflake_account_role.developer.name
   on_schema_object {
     object_type = "GIT REPOSITORY"
