@@ -124,3 +124,15 @@ resource "snowflake_execute" "github_repo" {
     snowflake_execute.github_api
   ]
 }
+
+resource "snowflake_grant_privileges_to_account_role" "permission_git_repo" {
+  privileges        = ["READ"]
+  account_role_name = snowflake_account_role.developer.name
+  on_schema_object {
+    object_type = "GIT REPOSITORY"
+    object_name = "ELT_ENGINE.PUBLIC.GITHUB_REPO"
+  }
+  depends_on = [
+    snowflake_execute.github_repo
+  ]
+}
