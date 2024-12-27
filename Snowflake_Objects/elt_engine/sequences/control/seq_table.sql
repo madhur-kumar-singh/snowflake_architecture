@@ -1,0 +1,3 @@
+CREATE SEQUENCE IF NOT EXISTS control.seq_table
+    START = 1
+    INCREMENT = 1;

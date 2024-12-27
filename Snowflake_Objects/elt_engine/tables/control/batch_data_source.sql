@@ -1,0 +1,1 @@
+CREATE OR ALTER TABLE control.batch_data_source ();
