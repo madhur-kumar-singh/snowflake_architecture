@@ -58,7 +58,7 @@ resource "snowflake_schema" "schema" {
 
 # granting operate permission to developer role on warehouse
 resource "snowflake_grant_privileges_to_account_role" "permission_warehouse" {
-  privileges        = ["OPERATE"]
+  privileges        = ["OPERATE","USAGE"]
   account_role_name = snowflake_account_role.developer.name
   on_account_object {
     object_type = "WAREHOUSE"
