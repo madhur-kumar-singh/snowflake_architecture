@@ -1,0 +1,3 @@
+CREATE SEQUENCE IF NOT EXISTS control.seq_batch
+    START 1
+    INTERVAL 1;
