@@ -1,5 +1,5 @@
 CREATE OR ALTER TABLE control.source_table (
-      table_id NUMBER(38,0) NOT NULL DEFAULT util.seq_table.nextval
+      table_id NUMBER(38,0) NOT NULL DEFAULT control.seq_table.nextval
     , data_source_id NUMBER(38,0)
     , job_id NUMBER(38,0)
     , table_name VARCHAR

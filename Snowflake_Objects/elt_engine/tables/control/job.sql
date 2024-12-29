@@ -1,5 +1,5 @@
 CREATE OR ALTER TABLE control.job (
-      job_id NUMBER(38,0) NOT NULL DEFAULT util.seq_job.nextval
+      job_id NUMBER(38,0) NOT NULL DEFAULT control.seq_job.nextval
     , job_name VARCHAR
     , relative_path VARCHAR
     , job VARCHAR

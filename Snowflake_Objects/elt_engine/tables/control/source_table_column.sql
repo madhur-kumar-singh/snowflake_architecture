@@ -1,5 +1,5 @@
 CREATE OR ALTER TABLE control.source_table_column (
-      source_table_column_id NUMBER(38,0) NOT NULL DEFAULT util.seq_source_table_column.nextval
+      source_table_column_id NUMBER(38,0) NOT NULL DEFAULT control.seq_source_table_column.nextval
     , table_id VARCHAR
     , source_column_name VARCHAR
     , target_column_name VARCHAR
