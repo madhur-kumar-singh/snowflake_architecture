@@ -5,7 +5,7 @@ EXECUTE AS OWNER
 AS
 $$
 BEGIN
-    IF (EXISTS (SELECT TOP 1 1 FROM control.data_source WHERE data_source_name = :data_source_name)) THEN
+    IF (EXISTS (SELECT TOP 1 1 FROM control.data_source WHERE (data_source_name = :data_source_name))) THEN
         RETURN 'Data Source already Exists';
     ELSE
         INSERT INTO control.data_source (

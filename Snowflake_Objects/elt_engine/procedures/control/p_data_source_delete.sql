@@ -6,15 +6,17 @@ AS
 $$
 DECLARE
     data_source_id NUMBER;
-    invalid_data_source exception(-20001, 'Invalid Data source name. Data source name is not found.');
+    invalid_data_source EXCEPTION(-20001, 'Invalid Data source name. Data source name is not found.');
 BEGIN
-    SELECT data_source_id INTO :data_source_id FROM control.data_source WHERE data_source_name = :data_source_name;
+    SELECT data_source_id INTO :data_source_id FROM control.data_source WHERE (data_source_name = :data_source_name);
+
     IF(:data_source_id IS NULL) THEN
         RAISE invalid_data_source;
     ELSE
         DELETE FROM control.data_source 
-            WHERE data_source_id = :data_source_id;
+            WHERE (data_source_id = :data_source_id);
     END IF;
+
     RETURN :data_source_name || '\thas been removed.';
 END;
 $$;

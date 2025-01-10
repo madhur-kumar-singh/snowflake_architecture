@@ -6,9 +6,10 @@ AS
 $$
 DECLARE
     job_id NUMBER;
-    invalid_job exception (-20001, 'Invalid Job name. The job name does not exists.');
+    invalid_job EXCEPTION (-20001, 'Invalid Job name. The job name does not exists.');
 BEGIN
-    SELECT job_id INTO :job_id FROM control.job WHERE job_name = :job_name;
+    SELECT job_id INTO :job_id FROM control.job WHERE (job_name = :job_name);
+
     IF(:job_id IS NULL) THEN
         RAISE invalid_job;
     ELSE
@@ -20,7 +21,7 @@ BEGIN
                 , comment = IFNULL(:comment, comment)
                 , modified_by = CURRENT_USER()
                 , modified_timestamp = CURRENT_TIMESTAMP()
-        WHERE job_id = :job_id;
+        WHERE (job_id = :job_id);
     END IF;
 
     RETURN :job_name || '\tis updated with new name\t' || :new_job_name ; 

@@ -6,10 +6,11 @@ AS
 $$
 DECLARE
     data_source_id VARCHAR;
-    invalid_data_source exception(-20001,'Invalid Data source name, Data Source not found.');
+    invalid_data_source EXCEPTION (-20001,'Invalid Data source name, Data Source not found.');
 BEGIN
-    SELECT data_source_id INTO :data_source_id FROM control.data_source WHERE data_source_name = :data_source_name;
-    IF(data_source_id IS NULL) THEN
+    SELECT data_source_id INTO :data_source_id FROM control.data_source WHERE (data_source_name = :data_source_name);
+
+    IF(:data_source_id IS NULL) THEN
         RAISE invalid_data_source;
     ELSE
         UPDATE control.data_source SET
@@ -21,8 +22,9 @@ BEGIN
         , credential_token = IFNULL(:credential_token, credential_token)
         , is_active = IFNULL(:is_active, is_active)
         , comment = IFNULL(:comment, comment) 
-        WHERE data_source_id = :data_source_id;
+        WHERE (data_source_id = :data_source_id);
     END IF;
+
     RETURN :data_source_name || '\thas been updated.';
 END;
 $$;
