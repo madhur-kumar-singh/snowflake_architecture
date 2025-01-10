@@ -7,7 +7,6 @@ $$
 DECLARE
     data_source_id NUMBER;
     job_id NUMBER;
-    table_id NUMBER;
     invalid_data_source EXCEPTION (-20001, "Invalid Data Source Name.");
     invalid_job EXCEPTION (-20002,"Invalid Job Name.");
     table_found EXCEPTION (-20003, "Table already exists.");
@@ -46,7 +45,8 @@ BEGIN
             , :is_active
             , :comment
         );
-    
+    END IF;
+
     RETURN :table_name || '\thas been added.';
 END;
 $$;
