@@ -17,3 +17,4 @@ CREATE OR ALTER TABLE control.source_table_column (
     , modified_timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP()
     , modified_by VARCHAR NOT NULL DEFAULT CURRENT_USER()
 );
+--Added to commit
