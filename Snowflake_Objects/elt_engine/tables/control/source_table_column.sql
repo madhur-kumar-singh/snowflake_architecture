@@ -7,7 +7,7 @@ CREATE OR ALTER TABLE control.source_table_column (
     , data_size NUMBER(38,0)
     , precision NUMBER(38,0)
     , default_value VARCHAR
-    , not_null VARCHAR
+    , not_null BOOLEAN
     , source_oridinal_position NUMBER(38,0)
     , target_oridinal_position NUMBER(38,0)
     , is_active BOOLEAN NOT NULL DEFAULT TRUE
