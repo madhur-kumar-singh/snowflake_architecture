@@ -5,7 +5,7 @@ EXECUTE AS OWNER
 AS
 $$
 BEGIN
-    IF(EXISTS (SELECT TOP 1 data_source_id FROM control.data_source WHERE (data_source_name = :data_source_name))) THEN
+    IF(EXISTS (SELECT data_source_id FROM control.data_source WHERE (data_source_name = :data_source_name))) THEN
         RETURN 'Data Source already Exists';
     ELSE
         INSERT INTO control.data_source (
@@ -19,12 +19,12 @@ BEGIN
             )
         VALUES (
                   :data_source_name
-                , ;data_source_type
-                , ;connection_string
-                , ;credential_username
-                , ;credential_secret
-                , ;credential_token
-                , ;comment
+                , :data_source_type
+                , :connection_string
+                , :credential_username
+                , :credential_secret
+                , :credential_token
+                , :comment
             );
     END IF;
 
