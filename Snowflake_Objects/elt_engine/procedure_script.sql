@@ -1,2 +1,24 @@
 BEGIN
+    EXECUTE IMMEDIATE FROM @elt_engine.public.github_repo/branches/main/Snowflake_Objects/elt_engine/procedures/control/p_batch_data_source_insert.sql;
+    EXECUTE IMMEDIATE FROM @elt_engine.public.github_repo/branches/main/Snowflake_Objects/elt_engine/procedures/control/p_batch_delete.sql;
+    EXECUTE IMMEDIATE FROM @elt_engine.public.github_repo/branches/main/Snowflake_Objects/elt_engine/procedures/control/p_batch_insert.sql;
+    EXECUTE IMMEDIATE FROM @elt_engine.public.github_repo/branches/main/Snowflake_Objects/elt_engine/procedures/control/p_batch_update.sql;
+    EXECUTE IMMEDIATE FROM @elt_engine.public.github_repo/branches/main/Snowflake_Objects/elt_engine/procedures/control/p_data_source_delete.sql;
+    EXECUTE IMMEDIATE FROM @elt_engine.public.github_repo/branches/main/Snowflake_Objects/elt_engine/procedures/control/p_data_source_insert.sql;
+    EXECUTE IMMEDIATE FROM @elt_engine.public.github_repo/branches/main/Snowflake_Objects/elt_engine/procedures/control/p_data_source_update.sql;
+    EXECUTE IMMEDIATE FROM @elt_engine.public.github_repo/branches/main/Snowflake_Objects/elt_engine/procedures/control/p_job_delete.sql;
+    EXECUTE IMMEDIATE FROM @elt_engine.public.github_repo/branches/main/Snowflake_Objects/elt_engine/procedures/control/p_job_insert.sql;
+    EXECUTE IMMEDIATE FROM @elt_engine.public.github_repo/branches/main/Snowflake_Objects/elt_engine/procedures/control/p_job_update.sql;
+    EXECUTE IMMEDIATE FROM @elt_engine.public.github_repo/branches/main/Snowflake_Objects/elt_engine/procedures/control/p_source_table_column_delete.sql;
+    EXECUTE IMMEDIATE FROM @elt_engine.public.github_repo/branches/main/Snowflake_Objects/elt_engine/procedures/control/p_source_table_column_insert.sql;
+    EXECUTE IMMEDIATE FROM @elt_engine.public.github_repo/branches/main/Snowflake_Objects/elt_engine/procedures/control/p_source_table_column_update.sql;
+    EXECUTE IMMEDIATE FROM @elt_engine.public.github_repo/branches/main/Snowflake_Objects/elt_engine/procedures/control/p_source_table_delete.sql;
+    EXECUTE IMMEDIATE FROM @elt_engine.public.github_repo/branches/main/Snowflake_Objects/elt_engine/procedures/control/p_source_table_file_delete.sql;
+    EXECUTE IMMEDIATE FROM @elt_engine.public.github_repo/branches/main/Snowflake_Objects/elt_engine/procedures/control/p_source_table_file_insert.sql;
+    EXECUTE IMMEDIATE FROM @elt_engine.public.github_repo/branches/main/Snowflake_Objects/elt_engine/procedures/control/p_source_table_file_update.sql;
+    EXECUTE IMMEDIATE FROM @elt_engine.public.github_repo/branches/main/Snowflake_Objects/elt_engine/procedures/control/p_source_table_insert.sql;
+    EXECUTE IMMEDIATE FROM @elt_engine.public.github_repo/branches/main/Snowflake_Objects/elt_engine/procedures/control/p_source_table_update.sql;
+    EXECUTE IMMEDIATE FROM @elt_engine.public.github_repo/branches/main/Snowflake_Objects/elt_engine/procedures/control/p_stored_procedure_delete.sql;
+    EXECUTE IMMEDIATE FROM @elt_engine.public.github_repo/branches/main/Snowflake_Objects/elt_engine/procedures/control/p_stored_procedure_insert.sql;
+    EXECUTE IMMEDIATE FROM @elt_engine.public.github_repo/branches/main/Snowflake_Objects/elt_engine/procedures/control/p_stored_procedure_update.sql;
 END;
