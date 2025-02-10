@@ -10,7 +10,7 @@ DECLARE
 BEGIN
     SELECT job_id INTO :job_id FROM elt_engine.control.job WHERE (job_name = :job_name);
 
-    IF (:job_id IS NULL) THEN
+    IF(:job_id IS NULL) THEN
         RAISE invalid_job;
     ELSE
         DELETE FROM elt_engine.control.job

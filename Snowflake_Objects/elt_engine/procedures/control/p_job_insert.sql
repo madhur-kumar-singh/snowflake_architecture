@@ -5,7 +5,7 @@ EXECUTE AS OWNER
 AS
 $$
 BEGIN
-    IF (EXISTS (SELECT TOP 1 1 FROM elt_engine.control.job WHERE (job_name = :job_name))) THEN
+    IF(EXISTS (SELECT TOP 1 1 FROM elt_engine.control.job WHERE (job_name = :job_name))) THEN
         RETURN 'Job already exists.';
     ELSE
         INSERT INTO elt_engine.control.job (job_name, relative_path, comment)

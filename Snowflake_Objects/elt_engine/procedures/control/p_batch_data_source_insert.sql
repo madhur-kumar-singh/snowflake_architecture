@@ -15,11 +15,11 @@ BEGIN
 
     SELECT data_source_id INTO :data_source_id FROM control.data_source WHERE (data_source_name = :data_source_name);
     
-    IF (:batch_id IS NULL) THEN
+    IF(:batch_id IS NULL) THEN
         RAISE invalid_batch;
-    ELSE IF (:data_source_id IS NULL) THEN
+    ELSE IF(:data_source_id IS NULL) THEN
         RAISE invalid_data_source;
-    ELSE IF (EXISTS (SELECT batch_data_source_id FROM control.batch_data_source WHERE (batch_id = :batch_id) AND (data_source_id = :data_source_id))) THEN
+    ELSE IF(EXISTS (SELECT batch_data_source_id FROM control.batch_data_source WHERE (batch_id = :batch_id) AND (data_source_id = :data_source_id))) THEN
         RETURN 'Batch and data source already Mapped';
     ELSE
         INSERT INTO control.batch_data_source(batch_id, data_source_id)

@@ -14,9 +14,9 @@ BEGIN
 
     SELECT table_id INTO :table_id FROM elt_engine.control.source_table WHERE (data_source_id = :data_source_id) AND (table_name = :table_name);
 
-    IF (:data_source_id IS NULL) THEN
+    IF(:data_source_id IS NULL) THEN
         RAISE invalid_data_source;
-    ELSE IF (:table_id IS NULL) THEN
+    ELSE IF(:table_id IS NULL) THEN
         RAISE invalid_table;
     ELSE
         UPDATE elt_engine.control.stored_procedure
