@@ -57,7 +57,7 @@ BEGIN
             , :is_active
             , :comment
         );
-    END IF:
+    END IF;
     RETURN 'Source file Added.';
 END;
 $$;

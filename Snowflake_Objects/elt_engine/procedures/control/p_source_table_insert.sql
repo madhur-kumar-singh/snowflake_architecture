@@ -7,9 +7,9 @@ $$
 DECLARE
     data_source_id NUMBER;
     job_id NUMBER;
-    invalid_data_source EXCEPTION (-20001, "Invalid Data Source Name.");
-    invalid_job EXCEPTION (-20002,"Invalid Job Name.");
-    table_found EXCEPTION (-20003, "Table already exists.");
+    invalid_data_source EXCEPTION (-20001, 'Invalid Data Source Name.');
+    invalid_job EXCEPTION (-20002,'Invalid Job Name.');
+    table_found EXCEPTION (-20003, 'Table already exists.');
 BEGIN
     SELECT data_source_id INTO :data_source_id FROM elt_engine.control.data_source WHERE data_source_name = :data_source_name;
 

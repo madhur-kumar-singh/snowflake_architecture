@@ -8,7 +8,7 @@ DECLARE
     batch_id NUMBER;
     invalid_batch EXCEPTION (-20001, 'Invalid Batch Name, Batch Name not found.');
 BEGIN
-    SELECT batch_id INTO :batch_id FROM control.batch WHERE control.batch WHERE (batch_name = :batch_name);
+    SELECT batch_id INTO :batch_id FROM elt_engine.control.batch WHERE (batch_name = :batch_name);
 
     IF(:batch_id IS NULL) THEN
         RAISE invalid_batch;

@@ -8,10 +8,10 @@ DECLARE
     data_source_id NUMBER;
     job_id NUMBER;
     table_id NUMBER;
-    invalid_data_source EXCEPTION (-20001, "Invalid Data Source Name.");
-    invalid_job EXCEPTION (-20002,"Invalid Job Name.");
-    table_not_found EXCEPTION (-20003, "Table does not exists.");
-    new_table_name EXCEPTION (-20004, "New table name parameter can not be null");
+    invalid_data_source EXCEPTION (-20001, 'Invalid Data Source Name.');
+    invalid_job EXCEPTION (-20002,'Invalid Job Name.');
+    table_not_found EXCEPTION (-20003, 'Table does not exists.');
+    new_table_name EXCEPTION (-20004, 'New table name parameter can not be null');
 BEGIN
     SELECT data_source_id INTO :data_source_id FROM elt_engine.control.data_source WHERE data_source_name = :data_source_name;
 
@@ -40,7 +40,7 @@ BEGIN
         , modified_timestamp = CURRENT_TIMESTAMP()
         , modified_by = CURRENT_USER() 
     WHERE (table_id = :table_id);
-    END IF:
+    END IF;
     
     RETURN :table_name || '\thas been updated.';
 END;
