@@ -21,11 +21,11 @@ BEGIN
 
     IF(:new_table_name IS NULL) THEN
         RAISE new_table_name;
-    ELSE IF(:data_source_id IS NULL) THEN
+    ELSEIF(:data_source_id IS NULL) THEN
         RAISE invalid_data_source;
-    ELSE IF(:job_id IS NULL) THEN
+    ELSEIF(:job_id IS NULL) THEN
         RAISE invalid_job;
-    ELSE IF(:table_id IS NULL) THEN
+    ELSEIF(:table_id IS NULL) THEN
         RAISE table_not_found;
     ELSE
         UPDATE elt_engine.control.source_table

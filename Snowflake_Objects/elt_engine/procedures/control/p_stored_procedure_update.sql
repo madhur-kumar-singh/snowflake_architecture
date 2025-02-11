@@ -16,7 +16,7 @@ BEGIN
 
     IF(:data_source_id IS NULL) THEN
         RAISE invalid_data_source;
-    ELSE IF(:table_id IS NULL) THEN
+    ELSEIF(:table_id IS NULL) THEN
         RAISE invalid_table;
     ELSE
         UPDATE elt_engine.control.stored_procedure

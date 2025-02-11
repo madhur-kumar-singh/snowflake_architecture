@@ -20,9 +20,9 @@ BEGIN
 
     IF(:data_source_id IS NULL) THEN
         RAISE invalid_data_source;
-    ELSE IF(:table_id IS NULL) THEN
+    ELSEIF(:table_id IS NULL) THEN
         RAISE invalid_table;
-    ELSE IF(:source_table_column_id IS NULL) THEN
+    ELSEIF(:source_table_column_id IS NULL) THEN
         RAISE invalid_column;
     ELSE
         DELETE FROM elt_engine.control.source_table_column

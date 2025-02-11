@@ -20,9 +20,9 @@ BEGIN
 
     IF(:data_source_id IS NULL) THEN
         RAISE invalid_data_source;
-    ELSE IF(:job_id IS NULL) THEN
+    ELSEIF(:job_id IS NULL) THEN
         RAISE invalid_job;
-    ELSE IF(:table_id IS NULL) THEN
+    ELSEIF(:table_id IS NULL) THEN
         RAISE table_not_found;
     ELSE
         DELETE FROM elt_engine.control.source_table

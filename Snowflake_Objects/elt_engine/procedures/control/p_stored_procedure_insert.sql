@@ -17,9 +17,9 @@ BEGIN
 
     IF(:data_source_id IS NULL) THEN
         RAISE invalid_data_source;
-    ELSE IF(:table_id IS NULL) THEN
+    ELSEIF(:table_id IS NULL) THEN
         RAISE invalid_table;
-    ELSE IF(EXISTS (SELECT table_id FROM elt_engine.control.stored_procedure WHERE (table_id = :table_id))) THEN
+    ELSEIF(EXISTS (SELECT table_id FROM elt_engine.control.stored_procedure WHERE (table_id = :table_id))) THEN
         RAISE stored_procedure_found;
     ELSE
         INSERT INTO elt_engine.control.stored_procedure (

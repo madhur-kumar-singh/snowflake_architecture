@@ -19,9 +19,9 @@ BEGIN
 
     IF(:data_source_id IS NULL) THEN
         RAISE invalid_data_source;
-    ELSE IF(:table_id IS NULL) THEN
+    ELSEIF(:table_id IS NULL) THEN
         RAISE invalid_table;
-    ELSE IF(EXISTS (SELECT source_table_column_id FROM elt_engine.control.source_table_columm WHERE (table_id = :table_id) AND (target_column_name = :target_column_name))) THEN
+    ELSEIF(EXISTS (SELECT source_table_column_id FROM elt_engine.control.source_table_columm WHERE (table_id = :table_id) AND (target_column_name = :target_column_name))) THEN
         RAISE column_already;
     ELSE
         INSERT INTO elt_engine.control.source_table_column (

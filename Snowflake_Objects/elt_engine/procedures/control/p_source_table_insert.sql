@@ -17,9 +17,9 @@ BEGIN
 
     IF(:data_source_id IS NULL) THEN
         RAISE invalid_data_source;
-    ELSE IF(:job_id IS NULL) THEN
+    ELSEIF(:job_id IS NULL) THEN
         RAISE invalid_job;
-    ELSE IF(EXISTS(SELECT table_id FROM elt_engine.control.source_table WHERE (data_source_id = :data_source_id) AND (job_id = :job_id) AND (table_name = :table_name))) THEN
+    ELSEIF(EXISTS(SELECT table_id FROM elt_engine.control.source_table WHERE (data_source_id = :data_source_id) AND (job_id = :job_id) AND (table_name = :table_name))) THEN
         RAISE table_found;
     ELSE
         INSERT INTO elt_engine.control.source_table (
