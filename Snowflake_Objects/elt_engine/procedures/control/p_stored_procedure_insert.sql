@@ -5,7 +5,7 @@ EXECUTE AS OWNER
 AS
 $$
 DECLARE
-    data_source_name NUMBER;
+    data_source_id NUMBER;
     table_id NUMBER;
     invalid_data_source EXCEPTION (-20001, 'Invalid Data Source Name. Data Source not Found.');
     invalid_table EXCEPTION (-20002, 'Invalid Table Name. Table Name not Found.');
